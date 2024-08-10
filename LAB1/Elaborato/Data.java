@@ -89,7 +89,7 @@ public class Data {
         for(int i = 0; i < numberOfExamples; i++) {
             str.append(i);
             str.append(":");
-            str.append(data[i].toString());
+            str.append(data[i]);
             str.append("\n");
         }
         return str.toString();
