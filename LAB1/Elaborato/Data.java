@@ -77,6 +77,24 @@ public class Data {
         return distanceMatrix;
     }
 
+    /**
+     * polimorfismo ad hoc per il metodo toString della classe Object per la classe Data
+     * crea una stringa in cui memorizza gli esempi memorizzati nell’attributo data, opportunamente enumerati.
+     *  Restituisce tale stringa
+     * @return stringa che modella lo stato dell'oggetto
+     */
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        for(int i = 0; i < numberOfExamples; i++) {
+            str.append(i);
+            str.append(":");
+            str.append(data[i].toString());
+            str.append("\n");
+        }
+        return str.toString();
+    }
+
     public static void main(String args[]){
 		Data trainingSet=new Data();
 		System.out.println(trainingSet);

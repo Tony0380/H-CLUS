@@ -49,7 +49,7 @@ public class Example {
     }
     
     /**
-     * caso di polimorfismo ad hoc per il metodo toString della classe Object per il parametro di tipo Example
+     * caso di polimorfismo ad hoc per il metodo toString della classe Object per la classe Example
      * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di [ V0, V1 ... Vn ] dove Vi sono valori dell'esempio
      */
     @Override
