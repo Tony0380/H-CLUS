@@ -63,7 +63,7 @@ public class Data {
     }
 
     /**
-     *  Restituisce la matrice triangolare superiore delle distanze
+     * Restituisce la matrice triangolare superiore delle distanze
      * @return matrice triangolare superiore delle distanze Euclidee calcolate tra gli esempi memorizzati in data.
      * Tale matrice va avvalorata usando il metodo distance di Example
      */
