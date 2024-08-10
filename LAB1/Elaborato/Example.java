@@ -3,7 +3,7 @@ package Elaborato;
 public class Example {
     
     /**
-     * vettore di valori reali
+     * Vettore di valori reali
      */
     private Double [] example;
 
@@ -16,7 +16,7 @@ public class Example {
     }
 
     /**
-     * modifica example inserendo v in posizione index
+     * Modifica example inserendo v in posizione index
      * @param index posizione del valore
      * @param v valore
      */
@@ -25,7 +25,7 @@ public class Example {
     }
 
     /**
-     * restituisce example[index]
+     * Restituisce example[index]
      * @param index posizione di example
      * @return valore memorizzato in example[index]
      */
@@ -34,7 +34,7 @@ public class Example {
     }
 
     /**
-     * Calcola la distanza euclidei tra this.example e new.example
+     * Calcola la distanza euclidea tra this.example e newE.example
      * @param newE instanza di example
      * @return restituisce il valore calcolato
      */
@@ -49,7 +49,7 @@ public class Example {
     }
     
     /**
-     * caso di polimorfismo ad hoc per il metodo toString della classe Object per la classe Example
+     * Polimorfismo ad hoc per il metodo toString della classe Object realizzato per la classe Example
      * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di [ V0, V1 ... Vn ] dove Vi sono valori dell'esempio
      */
     @Override

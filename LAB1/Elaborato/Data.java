@@ -46,7 +46,7 @@ public class Data {
 	}
 
     /**
-     * restituisce il numero di esempi nel Dataset
+     * Restituisce il numero di esempi nel Dataset
      * @return numero di esempi memorizzati in data
      */
     public int getNumberOfExample() {
@@ -54,7 +54,7 @@ public class Data {
     }
 
     /**
-     * restituisce data[exampleIndex]
+     * Restituisce data[exampleIndex]
      * @param exampleIndex indice di un esempio memorizzato in data
      * @return l’esempio memorizzato in data[exampleIndex]
      */
@@ -63,7 +63,7 @@ public class Data {
     }
 
     /**
-     *  restituisce la matrice triangolare superiore delle distanze
+     *  Restituisce la matrice triangolare superiore delle distanze
      * @return matrice triangolare superiore delle distanze Euclidee calcolate tra gli esempi memorizzati in data.
      * Tale matrice va avvalorata usando il metodo distance di Example
      */
@@ -78,9 +78,9 @@ public class Data {
     }
 
     /**
-     * polimorfismo ad hoc per il metodo toString della classe Object per la classe Data
-     * crea una stringa in cui memorizza gli esempi memorizzati nell’attributo data, opportunamente enumerati.
-     *  Restituisce tale stringa
+     * Polimorfismo ad hoc per il metodo toString della classe Object realizzato per la classe Data.
+     * Crea una stringa in cui memorizza gli esempi memorizzati nell’attributo data, opportunamente enumerati.
+     * Restituisce tale stringa
      * @return stringa che modella lo stato dell'oggetto
      */
     @Override
