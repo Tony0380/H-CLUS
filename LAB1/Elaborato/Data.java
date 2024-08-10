@@ -1,3 +1,5 @@
+package Elaborato;
+
 public class Data {
     /** Dataset */
     Example data[];
@@ -65,8 +67,8 @@ public class Data {
      * @return matrice triangolare superiore delle distanze Euclidee calcolate tra gli esempi memorizzati in data.
      * Tale matrice va avvalorata usando il metodo distance di Example
      */
-    public Double[][] distance () {
-        Double [][] distanceMatrix = new Double[this.numberOfExamples][this.numberOfExamples];
+    public double[][] distance () {
+        double [][] distanceMatrix = new double[this.numberOfExamples][this.numberOfExamples];
         for(int i = 0; i < this.numberOfExamples; i++) {
             for(int j = i; j < this.numberOfExamples; j++) {
                 distanceMatrix[i][j] = this.data[i].distance(this.data[j]);
@@ -74,4 +76,16 @@ public class Data {
         }
         return distanceMatrix;
     }
+
+    public static void main(String args[]){
+		Data trainingSet=new Data();
+		System.out.println(trainingSet);
+		double [][] distancematrix=trainingSet.distance();
+		System.out.println("Distance matrix:\n");
+		for(int i=0;i<distancematrix.length;i++) {
+			for(int j=0;j<distancematrix.length;j++)
+				System.out.print(distancematrix[i][j]+"\t");
+			System.out.println("");
+		}
+	}
 }
