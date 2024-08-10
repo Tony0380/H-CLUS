@@ -45,5 +45,19 @@ public class Example {
         }
         return eucDis;
     }
-
+    
+    /**
+     * caso di polimorfismo parametrico ad hoc per il metodo toString della classe Object per il parametro di tipo Example
+     * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di [V1,V2 ... Vn] dove Vi sono valori dell'esempio
+     */
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder ("[ ");
+        for(int i = 0; i < this.example.length; i++) {
+            str.append(this.example[i]);
+            str.append(" ");
+        }
+        str.append("]");
+        return str.toString();
+    }
 }
