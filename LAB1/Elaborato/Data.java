@@ -62,10 +62,16 @@ public class Data {
 
     /**
      *  restituisce la matrice triangolare superiore delle distanze
-     * @return matrice triangolare superiore delle distanze Euclidee calcolate tra gli  esempi memorizzati in data.
+     * @return matrice triangolare superiore delle distanze Euclidee calcolate tra gli esempi memorizzati in data.
      * Tale matrice va avvalorata usando il metodo distance di Example
      */
-    public double[][] distance () {
-        //TODO
+    public Double[][] distance () {
+        Double [][] distanceMatrix = new Double[this.numberOfExamples][this.numberOfExamples];
+        for(int i = 0; i < this.numberOfExamples; i++) {
+            for(int j = i; j < this.numberOfExamples; j++) {
+                distanceMatrix[i][j] = this.data[i].distance(this.data[j]);
+            }
+        }
+        return distanceMatrix;
     }
 }
