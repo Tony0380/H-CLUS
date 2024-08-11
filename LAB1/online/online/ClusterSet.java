@@ -1,3 +1,4 @@
+import Elaborato.Cluster;
 
 class ClusterSet {
 
