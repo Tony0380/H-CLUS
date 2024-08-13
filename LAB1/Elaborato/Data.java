@@ -2,9 +2,9 @@ package Elaborato;
 
 public class Data {
     /** Dataset */
-    Example data[];
+    private Example data[];
     /** Numero di esempi nel Dataset */
-    int numberOfExamples;
+    private int numberOfExamples;
 
     /** Avvalora un oggetto data predefinito (fornito dal docente) */
     Data(){

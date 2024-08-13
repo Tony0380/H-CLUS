@@ -9,7 +9,7 @@ public class Example {
 
     /**
      * Inizializza example come vettore di dimensione lenght
-     * @param length : dimensione esempio
+     * @param length dimensione esempio
      */
     public Example(int length) {
         example = new Double[length]; 
@@ -50,7 +50,7 @@ public class Example {
     
     /**
      * Polimorfismo ad hoc per il metodo toString della classe Object realizzato per la classe Example
-     * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di [ V0, V1 ... Vn ] dove Vi sono valori dell'esempio
+     * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di {@code [ V0, V1 ... Vn ]} dove Vi sono valori dell'esempio
      */
     @Override
     public String toString() {

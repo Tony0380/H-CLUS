@@ -1,6 +1,6 @@
 package Elaborato;
 
-class Cluster {	
+public class Cluster {	
 
 	private Integer clusteredData[]=new Integer[0];
 	
