@@ -33,4 +33,26 @@ public class Dendrogram {
     ClusterSet getClusterSet(int level) {
         return tree[level];
     }
+
+    /**
+     * restituisce la profondità del dendrogramma
+     * @return profondità del dendrogramma
+     */
+    int getDepth() {
+        return tree.length;
+    }
+
+    public String toString() {
+        String v="";
+        for (int i=0;i<tree.length;i++)
+            v+=("level"+i+":\n"+tree[i]+"\n");
+        return v;
+    }
+
+    String toString(Data data) {
+        String v="";
+        for (int i=0;i<tree.length;i++)
+            v+=("level"+i+":\n"+tree[i].toString(data)+"\n");
+        return v;
+    }
 }
