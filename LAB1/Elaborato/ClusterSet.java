@@ -65,7 +65,7 @@ class ClusterSet {
 		int closestC1 = 0;
 		int closestC2 = 0;
 		for(int i = 0; i < lastClusterIndex - 1; i++) {
-			for(int j = 0; j < lastClusterIndex; j++) {
+			for(int j = i + 1; j < lastClusterIndex; j++) {
 				double tmpDistance = distance.distance(C[i], C[j], data);
 				if(tmpDistance < minDistance) {
 					minDistance = tmpDistance;
