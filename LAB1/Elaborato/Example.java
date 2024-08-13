@@ -11,7 +11,7 @@ public class Example {
      * Inizializza example come vettore di dimensione lenght
      * @param length dimensione esempio
      */
-    public Example(int length) {
+    Example(int length) {
         example = new Double[length]; 
     }
 
