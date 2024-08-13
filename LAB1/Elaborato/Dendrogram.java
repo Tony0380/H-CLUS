@@ -18,11 +18,7 @@ public class Dendrogram {
      * @param level livello del dendrogramma dove memorizzare il ClusterSet
      */
     void setClusterSet(ClusterSet c, int level) {
-        if(level > tree.length) {
-            System.out.println("Errore nella scrittura del dendrogramma");
-        } else {
-            tree[level] = c;
-        }
+        tree[level] = c;
     }
 
     /**
