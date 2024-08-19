@@ -64,6 +64,7 @@ class ClusterSet {
 		double minDistance = Double.MAX_VALUE;
 		int closestC1 = 0;
 		int closestC2 = 0;
+		boolean inserted = false;
 		for(int i = 0; i < lastClusterIndex - 1; i++) {
 			for(int j = i + 1; j < lastClusterIndex; j++) {
 				double tmpDistance = distance.distance(C[i], C[j], data);
@@ -76,10 +77,12 @@ class ClusterSet {
 		}
 		Cluster newCluster = C[closestC1].createACopy();
 		newCluster = newCluster.mergeCluster(C[closestC2]);
-		newClusterSet.add(newCluster);
 		for(int i = 0; i < lastClusterIndex; i++) {
 			if(i != closestC1 && i != closestC2) {
 				newClusterSet.add(C[i]);
+			} else if (!inserted){
+				newClusterSet.add(newCluster);
+				inserted = true;
 			}
 		}
 		return newClusterSet;
