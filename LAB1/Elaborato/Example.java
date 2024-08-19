@@ -52,7 +52,6 @@ public class Example {
      * Polimorfismo ad hoc per il metodo toString della classe Object realizzato per la classe Example
      * @return stringa contenente la rappresentazione in stringa di caratteri sotto forma di {@code [ V0, V1 ... Vn ]} dove Vi sono valori dell'esempio
      */
-    @Override
     public String toString() {
         StringBuilder str = new StringBuilder ("[");
         for(int i = 0; i < this.example.length; i++) {

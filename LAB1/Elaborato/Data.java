@@ -83,7 +83,6 @@ public class Data {
      * Restituisce tale stringa
      * @return stringa che modella lo stato dell'oggetto
      */
-    @Override
     public String toString() {
         StringBuilder str = new StringBuilder();
         for(int i = 0; i < numberOfExamples; i++) {
