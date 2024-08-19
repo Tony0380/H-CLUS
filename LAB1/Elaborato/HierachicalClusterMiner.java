@@ -42,7 +42,8 @@ class HierachicalClusterMiner {
 		}
 		dendrogram.setClusterSet(cSet, 0);
 		for(int i=1; i < dendrogram.getDepth(); i++) {
-			dendrogram.setClusterSet(cSet.mergeClosestClusters(distance, data),i);
+			cSet = cSet.mergeClosestClusters(distance, data);
+			dendrogram.setClusterSet(cSet,i);
 		}
 	}
 
