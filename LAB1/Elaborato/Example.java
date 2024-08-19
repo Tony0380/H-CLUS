@@ -54,10 +54,12 @@ public class Example {
      */
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder ("[ ");
+        StringBuilder str = new StringBuilder ("[");
         for(int i = 0; i < this.example.length; i++) {
             str.append(this.example[i]);
-            str.append(" ");
+            if(i != this.example.length-1) {
+                str.append(",");
+            }
         }
         str.append("]");
         return str.toString();
