@@ -1,8 +1,7 @@
 package src.distance;
 
 import src.clustering.Cluster;
-import src.data.Data;
-import src.data.Example;
+import src.data.*;
 
 public class AverageLinkDistance implements ClusterDistance {
     public double distance(Cluster c1, Cluster c2, Data d) {
