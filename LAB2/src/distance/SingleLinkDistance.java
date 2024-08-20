@@ -1,6 +1,8 @@
-package src.elaborato;
+package src.distance;
 
 import src.clustering.Cluster;
+import src.data.Data;
+import src.data.Example;
 
 public class SingleLinkDistance implements ClusterDistance {
 	public double distance(Cluster c1, Cluster c2, Data d) {

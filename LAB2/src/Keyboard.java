@@ -1,3 +1,4 @@
+package src;
 //********************************************************************
 //  Keyboard.java       Author: Lewis and Loftus
 //

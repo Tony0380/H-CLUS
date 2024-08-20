@@ -1,14 +1,16 @@
-package src.elaborato;
+package src.clustering;
 
+import src.data.Data;
+import src.distance.ClusterDistance;
 
-class HierachicalClusterMiner {
+public class HierachicalClusterMiner {
 	
 	private Dendrogram dendrogram;
 
 	
 	
 	
-	HierachicalClusterMiner(int depth) {
+	public HierachicalClusterMiner(int depth) {
 		dendrogram= new Dendrogram(depth);
 	
 	}
@@ -18,7 +20,7 @@ class HierachicalClusterMiner {
 		return dendrogram.toString();
 	}
 	
-	String toString(Data data) {
+	public String toString(Data data) {
 		return dendrogram.toString(data);
 	}
 
