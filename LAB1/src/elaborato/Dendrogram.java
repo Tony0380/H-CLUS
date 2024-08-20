@@ -1,4 +1,4 @@
-package Elaborato;
+package src.elaborato;
 
 public class Dendrogram {
     /**Rappresentazione dei livelli del dendrogramma */

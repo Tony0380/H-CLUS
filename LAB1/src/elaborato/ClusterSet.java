@@ -1,4 +1,4 @@
-package Elaborato;
+package src.elaborato;
 
 class ClusterSet {
 
