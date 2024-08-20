@@ -1,10 +1,8 @@
 package src;
 
 import src.clustering.HierachicalClusterMiner;
-import src.distance.AverageLinkDistance;
-import src.distance.ClusterDistance;
-import src.distance.SingleLinkDistance;
 import src.data.Data;
+import src.distance.*;
 
 public class MainTest {
 
