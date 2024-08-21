@@ -2,6 +2,7 @@ package src.clustering;
 
 import src.data.Data;
 import src.distance.ClusterDistance;
+import src.eccezioni.ImpossibleClusterMerge;
 
 class ClusterSet {
 
@@ -63,32 +64,47 @@ class ClusterSet {
 	 * @return nuova istanza di ClusterSet
 	 */
 	public ClusterSet mergeClosestClusters(ClusterDistance distance, Data data) {
-		ClusterSet newClusterSet = new ClusterSet(lastClusterIndex-1);
-		double minDistance = Double.MAX_VALUE;
-		int closestC1 = 0;
-		int closestC2 = 0;
-		boolean inserted = false;
-		for(int i = 0; i < lastClusterIndex - 1; i++) {
-			for(int j = i + 1; j < lastClusterIndex; j++) {
-				double tmpDistance = distance.distance(C[i], C[j], data);
-				if(tmpDistance < minDistance) {
-					minDistance = tmpDistance;
-					closestC1 = i;
-					closestC2 = j;
+		try {
+
+			if(lastClusterIndex == 1) {
+				throw new ImpossibleClusterMerge("impossibile unire dei cluster, ne è presente solo uno.");
+			}
+			
+			ClusterSet newClusterSet = new ClusterSet(lastClusterIndex-1);
+			double minDistance = Double.MAX_VALUE;
+			int closestC1 = 0;
+			int closestC2 = 0;
+			boolean inserted = false;
+
+			for(int i = 0; i < lastClusterIndex - 1; i++) {
+				for(int j = i + 1; j < lastClusterIndex; j++) {
+					double tmpDistance = distance.distance(C[i], C[j], data);
+					if(tmpDistance < minDistance) {
+						minDistance = tmpDistance;
+						closestC1 = i;
+						closestC2 = j;
+					}
 				}
 			}
-		}
-		Cluster newCluster = C[closestC1].createACopy();
-		newCluster = newCluster.mergeCluster(C[closestC2]);
-		for(int i = 0; i < lastClusterIndex; i++) {
-			if(i != closestC1 && i != closestC2) {
-				newClusterSet.add(C[i]);
-			} else if (!inserted){
-				newClusterSet.add(newCluster);
-				inserted = true;
+
+			Cluster newCluster = C[closestC1].createACopy();
+			newCluster = newCluster.mergeCluster(C[closestC2]);
+
+			for(int i = 0; i < lastClusterIndex; i++) {
+				if(i != closestC1 && i != closestC2) {
+					newClusterSet.add(C[i]);
+				} else if (!inserted){
+					newClusterSet.add(newCluster);
+					inserted = true;
+				}
 			}
+
+			return newClusterSet;
+
+		} catch (ImpossibleClusterMerge e) {
+			System.out.println(e.getMessage());
+			return this;
 		}
-		return newClusterSet;
 	}
 
 }
