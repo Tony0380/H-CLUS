@@ -56,16 +56,20 @@ public class Example {
         } catch (InvalidSizeException e) {
             System.out.println(e.getMessage());
             System.out.println("La distanza verrà calcolata in base all'esempio di dimensione minore.");
+
             int min;
+
             if(this.example.length < newE.example.length) {
                 min = this.example.length;
             } else {
                 min = newE.example.length;
             }
+
             while(i < min) {
                 eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
                 i++;
             }
+            
         }
         return eucDis;
     }
