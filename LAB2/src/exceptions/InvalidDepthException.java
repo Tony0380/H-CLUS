@@ -1,4 +1,4 @@
-package src.eccezioni;
+package src.exceptions;
 
 /**
  * da sollevare se la profondità con cui è stato istanziato il dendrogramma 

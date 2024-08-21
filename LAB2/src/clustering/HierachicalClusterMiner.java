@@ -2,7 +2,7 @@ package src.clustering;
 
 import src.data.Data;
 import src.distance.ClusterDistance;
-import src.eccezioni.InvalidDepthException;
+import src.exceptions.InvalidDepthException;
 
 public class HierachicalClusterMiner {
 	

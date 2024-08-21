@@ -2,7 +2,7 @@ package src.clustering;
 
 import src.data.Data;
 import src.distance.ClusterDistance;
-import src.eccezioni.ImpossibleClusterMerge;
+import src.exceptions.ImpossibleClusterMerge;
 
 class ClusterSet {
 

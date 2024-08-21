@@ -1,4 +1,4 @@
-package src.eccezioni;
+package src.exceptions;
 
 /**
  * Eccezione lanciata in caso si provi a unire i cluster più vicini di un ClusterSet contenente un solo

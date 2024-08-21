@@ -1,6 +1,6 @@
 package src.data;
 
-import src.eccezioni.InvalidSizeException;
+import src.exceptions.InvalidSizeException;
 
 public class Example {
     
