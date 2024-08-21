@@ -1,5 +1,7 @@
 package src.data;
 
+import src.eccezioni.InvalidSizeException;
+
 public class Example {
     
     /**
@@ -41,9 +43,18 @@ public class Example {
     public Double distance(Example newE) {
         Double eucDis = 0.0;
         int i = 0;
-        while(i < this.example.length) {
-            eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
-            i++;
+
+        try {
+            if(this.example.length != newE.example.length) {
+                throw new InvalidSizeException(this.example.length+"!="+newE.example.length);
+            }
+    
+            while(i < this.example.length) {
+                eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
+                i++;
+            }
+        } catch (InvalidSizeException e) {
+            e.printStackTrace(System.err);
         }
         return eucDis;
     }
