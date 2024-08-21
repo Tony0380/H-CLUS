@@ -14,9 +14,6 @@ public class MainTest {
 		
 		Data data =new Data();
 		System.out.println(data);
-		System.out.print("Inserisci la profondita del dendrogramma da costruire: ");
-		int k = Keyboard.readInt();
-		HierachicalClusterMiner clustering=new HierachicalClusterMiner(k);
 		
 		double [][] distancematrix=data.distance();
 		System.out.println("Distance matrix:\n");
@@ -25,6 +22,10 @@ public class MainTest {
 				System.out.print(distancematrix[i][j]+"\t");
 			System.out.println("");
 		}
+		
+		System.out.print("Inserisci la profondita del dendrogramma da costruire: ");
+		int k = Keyboard.readInt();
+		HierachicalClusterMiner clustering=new HierachicalClusterMiner(k);
 
 		System.out.println("Decidi che algoritmo di distanza utilizzare per calcolare il dendrogramma: ");
 		System.out.println("1. Single Link Distance");
