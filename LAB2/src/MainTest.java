@@ -27,12 +27,11 @@ public class MainTest {
 			System.out.println("");
 		}
 
-		int choice;
 		System.out.println("Decidi che algoritmo di distanza utilizzare per calcolare il dendrogramma: ");
 		System.out.println("1. Single Link Distance");
 		System.out.println("2. Average Link Distance");
 		System.out.print("Scelta: ");
-		choice = Keyboard.readInt();
+		int choice = Keyboard.readInt();
 
 		if(choice == 1) {
 			System.out.println("Single link distance");
