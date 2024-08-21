@@ -46,7 +46,7 @@ public class Example {
 
         try {
             if(this.example.length != newE.example.length) {
-                throw new InvalidSizeException(this.example.length+"!="+newE.example.length);
+                throw new InvalidSizeException("Dimensioni degli esempi differenti: "+this.example.length+"!="+newE.example.length);
             }
     
             while(i < this.example.length) {
@@ -54,7 +54,18 @@ public class Example {
                 i++;
             }
         } catch (InvalidSizeException e) {
-            e.printStackTrace(System.err);
+            System.out.println(e.getMessage());
+            System.out.println("La distanza verrà calcolata in base all'esempio di dimensione minore.");
+            int min;
+            if(this.example.length < newE.example.length) {
+                min = this.example.length;
+            } else {
+                min = newE.example.length;
+            }
+            while(i < min) {
+                eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
+                i++;
+            }
         }
         return eucDis;
     }
