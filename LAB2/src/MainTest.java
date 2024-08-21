@@ -14,7 +14,10 @@ public class MainTest {
 		
 		Data data =new Data();
 		System.out.println(data);
-		int k=5;
+		int k;
+		Keyboard keyboard = new Keyboard();
+		System.out.print("Inserisci la profondita del dendrogramma da costruire: ");
+		k = keyboard.readInt();
 		HierachicalClusterMiner clustering=new HierachicalClusterMiner(k);
 		
 		System.out.println("Single link distance");
