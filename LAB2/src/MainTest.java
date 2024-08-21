@@ -19,9 +19,6 @@ public class MainTest {
 		k = Keyboard.readInt();
 		HierachicalClusterMiner clustering=new HierachicalClusterMiner(k);
 		
-		System.out.println("Single link distance");
-		ClusterDistance distance=new SingleLinkDistance();
-		
 		double [][] distancematrix=data.distance();
 		System.out.println("Distance matrix:\n");
 		for(int i=0;i<distancematrix.length;i++) {
@@ -29,16 +26,31 @@ public class MainTest {
 				System.out.print(distancematrix[i][j]+"\t");
 			System.out.println("");
 		}
-		clustering.mine(data,distance);
-		System.out.println(clustering);
-		System.out.println(clustering.toString(data));
+
+		int choice;
+		System.out.println("Decidi che algoritmo di distanza utilizzare per calcolare il dendrogramma: ");
+		System.out.println("1. Single Link Distance");
+		System.out.println("2. Average Link Distance");
+		System.out.print("Scelta: ");
+		choice = Keyboard.readInt();
+
+		if(choice == 1) {
+			System.out.println("Single link distance");
+			ClusterDistance distance=new SingleLinkDistance();
+			clustering.mine(data,distance);
+			System.out.println(clustering);
+			System.out.println(clustering.toString(data));
+		} else if (choice == 2) {
+			System.out.println("Average link distance");
+			ClusterDistance distance=new AverageLinkDistance();
+			clustering.mine(data,distance);
+			System.out.println(clustering);
+			System.out.println(clustering.toString(data));
+		} else {
+			System.out.println("Mi dispiace, le opzioni erano 1 e 2");
+		}
 		
 		
-		System.out.println("Average link distance");
-		distance=new AverageLinkDistance();
-		clustering.mine(data,distance);
-		System.out.println(clustering);
-		System.out.println(clustering.toString(data));
 		
 	}
 
