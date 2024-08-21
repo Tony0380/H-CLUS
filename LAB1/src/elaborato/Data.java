@@ -7,7 +7,7 @@ public class Data {
     private int numberOfExamples;
 
     /** Avvalora un oggetto data predefinito (fornito dal docente) */
-    Data(){
+    public Data(){
 		//data
 		
 		data = new Example [5];

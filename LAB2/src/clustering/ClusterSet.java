@@ -1,18 +1,18 @@
 package src.clustering;
 
-import src.distance.ClusterDistance;
 import src.data.Data;
+import src.distance.ClusterDistance;
 
 class ClusterSet {
 
 	private Cluster C[];
 	private int lastClusterIndex=0;
 	
-	ClusterSet(int k){
+	public ClusterSet(int k){
 		C=new Cluster[k];
 	}
 	
-	void add(Cluster c){
+	public void add(Cluster c){
 		for(int j=0;j<lastClusterIndex;j++)
 			if(c==C[j]) // to avoid duplicates
 				return;
@@ -20,7 +20,7 @@ class ClusterSet {
 		lastClusterIndex++;
 	}
 	
-	Cluster get(int i){
+	public Cluster get(int i){
 		return C[i];
 	}
 	
@@ -39,7 +39,7 @@ class ClusterSet {
 	}
 
 	
-	String toString(Data data){
+	public String toString(Data data){
 		String str="";
 		for(int i=0;i<C.length;i++){
 			if (C[i]!=null){

@@ -9,7 +9,7 @@ public class Cluster {
 	
 		
 	//add the index of a sample to the cluster
-	void addData(int id){
+	public void addData(int id){
 		// controllo duplicati
 		for(int i=0; i<clusteredData.length;i++)
 			if(id==clusteredData[i])
@@ -58,7 +58,7 @@ public class Cluster {
 		return str;	
 	}
 	
-	String toString(Data data){
+	public String toString(Data data){
 		String str="";
 		
 		for(int i=0;i<clusteredData.length;i++)
