@@ -1,7 +1,7 @@
 package src.exceptions;
 
 /**
- * Eccezione lanciata in caso si provi a unire i cluster più vicini di un ClusterSet contenente un solo
+ * da sollevare in caso si provi a unire i cluster più vicini di un ClusterSet contenente un solo
  * Cluster
  */
 public class ImpossibleClusterMerge extends Exception{
