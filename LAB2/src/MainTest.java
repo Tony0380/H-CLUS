@@ -14,9 +14,8 @@ public class MainTest {
 		
 		Data data =new Data();
 		System.out.println(data);
-		int k;
 		System.out.print("Inserisci la profondita del dendrogramma da costruire: ");
-		k = Keyboard.readInt();
+		int k = Keyboard.readInt();
 		HierachicalClusterMiner clustering=new HierachicalClusterMiner(k);
 		
 		double [][] distancematrix=data.distance();
