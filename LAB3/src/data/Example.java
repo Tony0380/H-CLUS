@@ -1,38 +1,47 @@
 package src.data;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import src.exceptions.InvalidSizeException;
 
-public class Example {
+public class Example implements Iterable<Double> {
     
     /**
-     * Vettore di valori reali
+     * Collection di valori reali
      */
-    private Double [] example;
+    private List<Double> example;
 
     /**
-     * Inizializza example come vettore di dimensione lenght
-     * @param length dimensione esempio
+     * Inizializza example una Collection di tipo {@code LinkedList}
      */
-    public Example(int length) {
-        example = new Double[length]; 
+    public Example() {
+        example = new LinkedList<>(); 
     }
 
     /**
-     * Modifica example inserendo v in posizione index
-     * @param index posizione del valore
-     * @param v valore
+     * Implementazione del metodo virtuale iterator presente nell'interfaccia Iterable
+     * @return Iteratore per la Collection di tipo LinkedList example
      */
-    public void set(int index, Double v) {
-        example[index] = v;
+    public Iterator<Double> iterator(){
+        return example.iterator();
     }
 
     /**
-     * Restituisce example[index]
-     * @param index posizione di example
-     * @return valore memorizzato in example[index]
+     * Aggiunge alla collection di tipo List {@code example} il valore passatogli come parametro
+     * @param v Valore reale da inserire nella Collection
+     */
+    public void add(Double v) {
+        example.add(v);
+    }
+
+    /**
+     * Restituisce il valore reale presente nella collection in posizione del parametro passato.
+     * @param index Posizione del valore reale all'interno della collection
+     * @return Valore reale estrapolato dalla collection
      */
     public Double get(int index) {
-        return example[index];
+        return example.get(index);
     }
 
     /**
@@ -43,17 +52,21 @@ public class Example {
     public Double distance(Example newE) {
 
         Double eucDis = 0.0;
-        int i = 0;
 
         try {
             
-            if(this.example.length != newE.example.length) {
-                throw new InvalidSizeException("Dimensioni degli esempi differenti: "+this.example.length+"!="+newE.example.length);
+            if(this.example.size() != newE.example.size()) {
+                throw new InvalidSizeException("Dimensioni degli esempi differenti: "+this.example.size()+"!="+newE.example.size());
             }
     
-            while(i < this.example.length) {
-                eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
-                i++;
+            Iterator<Double> i1 = this.iterator();
+            Iterator<Double> i2 = newE.iterator();
+
+            while(i1.hasNext()) {
+                Double val1 = i1.next();
+                Double val2 = i2.next();
+                Double diff = val1 - val2;
+                eucDis = eucDis + (diff * diff);
             }
 
         } catch (InvalidSizeException e) {
@@ -61,17 +74,22 @@ public class Example {
             System.out.println(e.getMessage());
             System.out.println("La distanza verrà calcolata in base all'esempio di dimensione minore.");
 
-            int min;
+            Iterator<Double> min;
+            Iterator<Double> other;
 
-            if(this.example.length < newE.example.length) {
-                min = this.example.length;
+            if(this.example.size() < newE.example.size()) {
+                min = this.iterator();
+                other = newE.iterator();
             } else {
-                min = newE.example.length;
+                min = newE.iterator();
+                other = this.iterator();
             }
 
-            while(i < min) {
-                eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
-                i++;
+            while(min.hasNext()) {
+                Double val1 = min.next();
+                Double val2 = other.next();
+                Double diff = val1 - val2;
+                eucDis = eucDis + (diff * diff);
             }
             
         }
@@ -86,9 +104,9 @@ public class Example {
      */
     public String toString() {
         StringBuilder str = new StringBuilder ("[");
-        for(int i = 0; i < this.example.length; i++) {
-            str.append(this.example[i]);
-            if(i != this.example.length-1) {
+        for (Double val : example) {
+            str.append(val);
+            if(val != example.getLast()) {
                 str.append(",");
             }
         }
