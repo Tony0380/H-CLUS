@@ -11,34 +11,34 @@ public class Data {
 		//data
 		
 		data = new Example [5];
-		Example e=new Example(3);
-		e.set(0, 1.0);
-		e.set(1, 2.0);
-		e.set(2, 0.0);
+		Example e=new Example();
+		e.add(1.0);
+		e.add(2.0);
+		e.add(0.0);
 		data[0]=e;
 		
-		e=new Example(3);
-		e.set(0, 0.0);
-		e.set(1, 1.0);
-		e.set(2, -1.0);
+		e=new Example();
+		e.add(0.0);
+		e.add(1.0);
+		e.add(-1.0);
 		data[1]=e;
 		
-		e=new Example(3);
-		e.set(0, 1.0);
-		e.set(1, 3.0);
-		e.set(2, 5.0);
+		e=new Example();
+		e.add(1.0);
+		e.add(3.0);
+		e.add(5.0);
 		data[2]=e;
 
-		e=new Example(3);
-		e.set(0, 1.0);
-		e.set(1, 3.0);
-		e.set(2, 4.0);
+		e=new Example();
+		e.add(1.0);
+		e.add(3.0);
+		e.add(4.0);
 		data[3]=e;
 
-		e=new Example(3);
-		e.set(0, 2.0);
-		e.set(1, 2.0);
-		e.set(2, 0.0);
+		e=new Example();
+		e.add(2.0);
+		e.add(2.0);
+		e.add(0.0);
 		data[4]=e;
 
 		// numberOfExamples		
