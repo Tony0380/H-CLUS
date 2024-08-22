@@ -1,5 +1,6 @@
 package src.distance;
 
+import java.util.Iterator;
 import src.clustering.Cluster;
 import src.data.*;
 
@@ -8,10 +9,17 @@ public class AverageLinkDistance implements ClusterDistance {
 
         double average = 0;
 
-        for(int i = 0; i < c1.getSize(); i++) {
-            Example e1 = d.getExample(c1.getElement(i));
-            for(int j = 0; j < c2.getSize(); j++) {
-                average += e1.distance(d.getExample(c2.getElement(j)));
+        Iterator<Integer> i1 = c1.iterator();
+        Iterator<Integer> i2 = c2.iterator();
+
+        while(i1.hasNext()) {
+
+            Example e1 = d.getExample(i1.next());
+
+            while(i1.hasNext()) {
+
+                average += e1.distance(d.getExample(i2.next()));
+                
             }
         }
         return (average/(c1.getSize()*c2.getSize()));
