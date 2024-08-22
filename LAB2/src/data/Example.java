@@ -41,10 +41,12 @@ public class Example {
      * @return restituisce il valore calcolato
      */
     public Double distance(Example newE) {
+
         Double eucDis = 0.0;
         int i = 0;
 
         try {
+            
             if(this.example.length != newE.example.length) {
                 throw new InvalidSizeException("Dimensioni degli esempi differenti: "+this.example.length+"!="+newE.example.length);
             }
@@ -53,7 +55,9 @@ public class Example {
                 eucDis = eucDis + ((this.example[i] - newE.example[i]) * (this.example[i] - newE.example[i]));
                 i++;
             }
+
         } catch (InvalidSizeException e) {
+
             System.out.println(e.getMessage());
             System.out.println("La distanza verrà calcolata in base all'esempio di dimensione minore.");
 
@@ -71,7 +75,9 @@ public class Example {
             }
             
         }
+        
         return eucDis;
+
     }
     
     /**

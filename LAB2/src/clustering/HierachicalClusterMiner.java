@@ -59,10 +59,14 @@ public class HierachicalClusterMiner {
 			}
 
 		} catch (InvalidDepthException e) {
+
 			System.out.println(e.getMessage());
 			System.out.println("Ricostruisco il dendrogramma col numero massimo di livelli possibili:");
+
 			dendrogram = new Dendrogram(data.getNumberOfExample());
+			
 			this.mine(data, distance);
+
 		}
 	}
 

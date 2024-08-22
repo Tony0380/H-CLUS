@@ -61,7 +61,7 @@ class ClusterSet {
 	 * memorizzato nell’oggetto this meno 1).
 	 * @param distance oggetto per il calcolo della distanza tra cluster
 	 * @param data oggetto istanza che rappresenta il dataset in cui si sta calcolando l’oggetto istanza di ClusterSet
-	 * @return nuova istanza di ClusterSet
+	 * @return nuova istanza di ClusterSet se possibile unire due Cluster, altrimenti {@code this}
 	 */
 	public ClusterSet mergeClosestClusters(ClusterDistance distance, Data data) {
 		try {
@@ -102,8 +102,11 @@ class ClusterSet {
 			return newClusterSet;
 
 		} catch (ImpossibleClusterMerge e) {
+
 			System.out.println(e.getMessage());
+
 			return this;
+
 		}
 	}
 
