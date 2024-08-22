@@ -87,7 +87,7 @@ class ClusterSet {
 				}
 			}
 
-			Cluster newCluster = C[closestC1].createACopy();
+			Cluster newCluster = (Cluster) C[closestC1].clone();
 			newCluster = newCluster.mergeCluster(C[closestC2]);
 
 			for(int i = 0; i < lastClusterIndex; i++) {

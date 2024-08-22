@@ -16,10 +16,10 @@ public class AverageLinkDistance implements ClusterDistance {
 
             Example e1 = d.getExample(i1.next());
 
-            while(i1.hasNext()) {
+            while(i2.hasNext()) {
 
                 average += e1.distance(d.getExample(i2.next()));
-                
+
             }
         }
         return (average/(c1.getSize()*c2.getSize()));
