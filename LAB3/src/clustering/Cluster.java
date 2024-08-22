@@ -38,14 +38,15 @@ public class Cluster implements Iterable<Integer>, Cloneable{
 	 * @return Oggetto clonato
 	 * @throws CloneNotSupportedException Se l'oggetto non supporta l'interfaccia Clonable
 	 */
-	public Object clone() {
-		Object o = null;
-		try {
-			o = super.clone();
-		} catch (CloneNotSupportedException e) {
-			System.out.println("Errore: L'oggetto non può essere clonato, restituzione di un oggetto nullo");
-		}
-		return o;
+    public Object clone() {
+        try {
+            Cluster cloned = (Cluster) super.clone();
+            System.out.println("marameo");
+            cloned.clusteredData = new TreeSet<>(this.clusteredData);
+            return cloned;
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError("Clonazione non supportata", e);
+        }
 	}
 	
 	/**
