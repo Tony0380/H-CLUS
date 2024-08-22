@@ -7,7 +7,7 @@ import src.data.Data;
 
 public class Cluster implements Iterable<Integer>, Cloneable{	
 
-	private Set<Integer> clusteredData=new TreeSet<>();
+	private Set<Integer> clusteredData = new TreeSet<>();
 
     /**
      * Implementazione del metodo virtuale iterator presente nell'interfaccia Iterable

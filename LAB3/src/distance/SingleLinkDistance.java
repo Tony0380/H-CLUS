@@ -1,5 +1,6 @@
 package src.distance;
 
+import java.util.Iterator;
 import src.clustering.Cluster;
 import src.data.*;
 
@@ -8,11 +9,13 @@ public class SingleLinkDistance implements ClusterDistance {
 		
 		double min=Double.MAX_VALUE;
 		
-		for (int i=0;i< c1.getSize();i++)
+		Iterator<Integer> i1 = c1.iterator();
+		Iterator<Integer> i2 = c2.iterator();
+		while(i1.hasNext())
 		{
-			Example e1=d.getExample(c1.getElement(i));
-			for(int j=0; j<c2.getSize();j++) {
-				double distance=e1.distance(d.getExample(c2.getElement(j)));
+			Example e1=d.getExample(i1.next());
+			while(i2.hasNext()) {
+				double distance=e1.distance(d.getExample(i2.next()));
 				if (distance<min)				
 					min=distance;
 			}
