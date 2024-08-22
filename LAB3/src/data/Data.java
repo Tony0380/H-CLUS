@@ -1,65 +1,71 @@
 package src.data;
 
-public class Data {
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Data implements Iterable<Example>{
     /** Dataset */
-    private Example data[];
-    /** Numero di esempi nel Dataset */
-    private int numberOfExamples;
+    private List<Example> data = new ArrayList<>();
 
     /** Avvalora un oggetto data predefinito (fornito dal docente) */
     public Data(){
 		//data
 		
-		data = new Example [5];
 		Example e=new Example();
 		e.add(1.0);
 		e.add(2.0);
 		e.add(0.0);
-		data[0]=e;
+		data.add(e);
 		
 		e=new Example();
 		e.add(0.0);
 		e.add(1.0);
 		e.add(-1.0);
-		data[1]=e;
+		data.add(e);
 		
 		e=new Example();
 		e.add(1.0);
 		e.add(3.0);
 		e.add(5.0);
-		data[2]=e;
+		data.add(e);
 
 		e=new Example();
 		e.add(1.0);
 		e.add(3.0);
 		e.add(4.0);
-		data[3]=e;
+		data.add(e);
 
 		e=new Example();
 		e.add(2.0);
 		e.add(2.0);
 		e.add(0.0);
-		data[4]=e;
-
-		// numberOfExamples		
-		numberOfExamples=5;		 
+		data.add(e);	 
 	}
+
+    /**
+     * Implementazione del metodo virtuale iterator presente nell'interfaccia Iterable
+     * @return Iteratore per la Collection di tipo ArrayList data
+     */
+    public Iterator<Example> iterator(){
+        return data.iterator();
+    }
 
     /**
      * Restituisce il numero di esempi nel Dataset
      * @return numero di esempi memorizzati in data
      */
     public int getNumberOfExample() {
-        return this.numberOfExamples;
+        return data.size();
     }
 
     /**
-     * Restituisce data[exampleIndex]
+     * Restituisce l'esempio nel dataset in posizione passata come parametro
      * @param exampleIndex indice di un esempio memorizzato in data
-     * @return l’esempio memorizzato in data[exampleIndex]
+     * @return l’esempio memorizzato in nella posizione passata
      */
     public Example getExample(int exampleIndex) {
-        return this.data[exampleIndex];
+        return data.get(exampleIndex);
     }
 
     /**
@@ -68,10 +74,10 @@ public class Data {
      * Tale matrice va avvalorata usando il metodo distance di Example
      */
     public double[][] distance () {
-        double [][] distanceMatrix = new double[this.numberOfExamples][this.numberOfExamples];
-        for(int i = 0; i < this.numberOfExamples; i++) {
-            for(int j = i; j < this.numberOfExamples; j++) {
-                distanceMatrix[i][j] = this.data[i].distance(this.data[j]);
+        double [][] distanceMatrix = new double[getNumberOfExample()][getNumberOfExample()];
+        for(int i = 0; i < getNumberOfExample(); i++) {
+            for(int j = i; j < getNumberOfExample(); j++) {
+                distanceMatrix[i][j] = this.getExample(i).distance(getExample(j));
             }
         }
         return distanceMatrix;
@@ -85,11 +91,16 @@ public class Data {
      */
     public String toString() {
         StringBuilder str = new StringBuilder();
-        for(int i = 0; i < numberOfExamples; i++) {
-            str.append(i);
+
+        Iterator<Example> i = iterator();
+        int tag = 0; //Utilizzato per stampare il numero ordinale
+
+        while(i.hasNext()) {
+            str.append(tag);
             str.append(":");
-            str.append(data[i]);
+            str.append(i.next());
             str.append("\n");
+            tag++;
         }
         return str.toString();
     }
