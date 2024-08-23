@@ -90,6 +90,14 @@ public class HierachicalClusterMiner implements Serializable {
 	//**********************************************************************************************************************
 
 
+	/**
+	 * Metodo per il recupero di un oggetto {@code HierachicalClusterMiner} da un file. (de-Serializzazione)
+	 * @param filename Nome del file / Directory da cui leggere l'oggetto.
+	 * @return Oggetto recuperato dal file.
+	 * @throws FileNotFoundException Lanciata in caso il file specificato non esista.
+	 * @throws IOException Lanciata in caso di un'operazione di Input/Output fallita o interrotta
+	 * @throws ClassNotFoundException Lanciata quando si tenta di caricare una classe non trovata nel Class Loader di Java.
+	 */
 	public static HierachicalClusterMiner loaHierachicalClusterMiner (String filename) throws FileNotFoundException,
 	IOException, ClassNotFoundException {
 		FileInputStream inFile = new FileInputStream(filename);
@@ -99,6 +107,12 @@ public class HierachicalClusterMiner implements Serializable {
 		return loadedHierachicalClusterMiner;
 	}
 
+	/**
+	 * Metodo per il salvataggio su file di un oggetto {@code HierachicalClusterMiner} (Serializzazione)
+	 * @param filename Nome del file / Directory su cui scrivere l'oggetto
+	 * @throws FileNotFoundException Lanciata in caso il file specificato non esista.
+	 * @throws IOException Lanciata in caso di un'operazione di Input/Output fallita o interrotta
+	 */
 	public void salva(String filename) throws FileNotFoundException, IOException {
 		FileOutputStream outFile = new FileOutputStream(filename);
 		ObjectOutputStream outStream = new ObjectOutputStream(outFile);
