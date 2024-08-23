@@ -1,11 +1,20 @@
 package src.clustering;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 import src.data.Data;
 
-public class Cluster implements Iterable<Integer>, Cloneable{	
+//**********************************************************************************
+// Interfacce implementate:
+// Iterable: Per poter utilizzare L'iteratore sulla collection di tipo Set clusterdata
+// Clonable: Per poter creare una copia non superficiale dell'oggetto
+// Serializable: Per poter serializzare e quindi salvare su file la classe
+//
+//**********************************************************************************
+
+public class Cluster implements Iterable<Integer>, Cloneable, Serializable{	
 
 	private Set<Integer> clusteredData = new TreeSet<>();
 
