@@ -1,5 +1,11 @@
 package src.clustering;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import src.data.Data;
 import src.distance.ClusterDistance;
@@ -76,5 +82,19 @@ public class HierachicalClusterMiner implements Serializable {
 		}
 	}
 
-	
+	public static HierachicalClusterMiner loaHierachicalClusterMiner (String filename) throws FileNotFoundException,
+	IOException, ClassNotFoundException {
+		FileInputStream inFile = new FileInputStream(filename);
+		ObjectInputStream inStream = new ObjectInputStream(inFile);
+		HierachicalClusterMiner loadedHierachicalClusterMiner = (HierachicalClusterMiner) inStream.readObject();
+		inStream.close();
+		return loadedHierachicalClusterMiner;
+	}
+
+	public void salva(String filename) throws FileNotFoundException, IOException {
+		FileOutputStream outFile = new FileOutputStream(filename);
+		ObjectOutputStream outStream = new ObjectOutputStream(outFile);
+		outStream.writeObject(this);
+		outStream.close();
+	}
 }
