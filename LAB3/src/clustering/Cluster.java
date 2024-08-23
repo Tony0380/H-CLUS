@@ -17,6 +17,13 @@ public class Cluster implements Iterable<Integer>, Cloneable{
 		return clusteredData.iterator();
 	}
 	
+	//*************************************************************************
+	// L'implementazione del metodo addData è stata sostituita dal metodo add 
+	// presente nell'interfaccia Set e implementato in TreeSet
+	// Poiché rispecchia tutte le proprietà che necessita il tipo di data
+	// Tra cui: l'unicità degli elementi
+	//*************************************************************************
+
 	/**
 	 * Aggiunge un indice al Cluster
 	 * @param id indice da aggiungere
