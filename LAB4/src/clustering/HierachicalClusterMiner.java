@@ -82,6 +82,14 @@ public class HierachicalClusterMiner implements Serializable {
 		}
 	}
 
+	//**********************************************************************************************************************
+	// Metodi per Serializzazione e de-Serializzazione
+	// ObjectInputStream e ObjectOutStream: stream di Manipolazione che utilizzati congiutamente a un
+	// OutputStream e un InputStream in questo caso File, permettono lo stream dei dati in maniera binaria Da e Verso il File.
+	//
+	//**********************************************************************************************************************
+
+
 	public static HierachicalClusterMiner loaHierachicalClusterMiner (String filename) throws FileNotFoundException,
 	IOException, ClassNotFoundException {
 		FileInputStream inFile = new FileInputStream(filename);
