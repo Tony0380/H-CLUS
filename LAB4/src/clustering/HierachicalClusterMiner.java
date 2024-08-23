@@ -100,7 +100,7 @@ public class HierachicalClusterMiner implements Serializable {
 	 */
 	public static HierachicalClusterMiner loaHierachicalClusterMiner (String filename) throws FileNotFoundException,
 	IOException, ClassNotFoundException {
-		FileInputStream inFile = new FileInputStream(filename);
+		FileInputStream inFile = new FileInputStream(filename + ".HCM");
 		ObjectInputStream inStream = new ObjectInputStream(inFile);
 		HierachicalClusterMiner loadedHierachicalClusterMiner = (HierachicalClusterMiner) inStream.readObject();
 		inStream.close();
@@ -114,7 +114,7 @@ public class HierachicalClusterMiner implements Serializable {
 	 * @throws IOException Lanciata in caso di un'operazione di Input/Output fallita o interrotta
 	 */
 	public void salva(String filename) throws FileNotFoundException, IOException {
-		FileOutputStream outFile = new FileOutputStream(filename);
+		FileOutputStream outFile = new FileOutputStream(filename + ".HCM");
 		ObjectOutputStream outStream = new ObjectOutputStream(outFile);
 		outStream.writeObject(this);
 		outStream.close();
