@@ -28,14 +28,27 @@ public class MainTest {
 	public static void main(String[] args) {
 		
 		
-		Data data;
-		try {
-			data = new Data("exampletab");
-		} catch (NoDataException e) {
+		Data data = null;
+		boolean loadedData = false;
+		do { 
 
-			System.out.println(e.getMessage());
-			data = new Data();
-		}
+			try {
+
+				System.out.print("Inserisci il nome della tabella da cui recuperare gli Esempi: ");
+				String tableName = Keyboard.readString();
+				data = new Data(tableName);
+				loadedData = true;
+
+			} catch (NoDataException e) {
+	
+				System.out.println(e.getMessage());
+				
+			}
+	
+		} while (!loadedData);
+
+
+
 		System.out.println(data);
 		
 		double [][] distancematrix=data.distance();

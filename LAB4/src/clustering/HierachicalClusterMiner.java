@@ -10,12 +10,14 @@ import java.io.Serializable;
 import src.data.Data;
 import src.distance.ClusterDistance;
 import src.exceptions.InvalidDepthException;
-//**********************************************************************************
+
+//**************************************************************************************************************************
 // Interfacce implementate:
 // Serializable: Per poter serializzare e quindi salvare su file la classe
 // Serializable è stata implementata anche in tutte le classi di cui HierarchicalClusterMiner è composta e fa riferimento
 // altrimenti la serializzazione non sarebbe possibile.
-//**********************************************************************************
+//**************************************************************************************************************************
+
 public class HierachicalClusterMiner implements Serializable {
 	
 	private Dendrogram dendrogram;

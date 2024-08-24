@@ -10,6 +10,7 @@ import src.exceptions.ImpossibleClusterMerge;
 // Serializable: Per poter serializzare e quindi salvare su file la classe
 //
 //**********************************************************************************
+
 class ClusterSet implements Serializable {
 
 	private Cluster C[];
