@@ -15,7 +15,7 @@ public class TableData {
 
     private DbAccess db;
 
-    TableData(DbAccess db) {
+    public TableData(DbAccess db) {
         this.db = db;
     }
 

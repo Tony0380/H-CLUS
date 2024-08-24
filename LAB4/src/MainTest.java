@@ -5,6 +5,7 @@ import java.io.IOException;
 import src.clustering.HierachicalClusterMiner;
 import src.data.Data;
 import src.distance.*;
+import src.exceptions.NoDataException;
 
 public class MainTest {
 
@@ -14,7 +15,14 @@ public class MainTest {
 	public static void main(String[] args) {
 		
 		
-		Data data =new Data();
+		Data data;
+		try {
+			data = new Data("exampletab");
+		} catch (NoDataException e) {
+
+			System.out.println("Tabella vuota, generazione di una collezione di esempi random.");
+			data = new Data();
+		}
 		System.out.println(data);
 		
 		double [][] distancematrix=data.distance();

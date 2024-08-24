@@ -1,10 +1,15 @@
 package src.data;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
+import src.database.DbAccess;
+import src.database.TableData;
+import src.exceptions.EmptySetException;
+import src.exceptions.MissingNumberException;
+import src.exceptions.NoDataException;
 //**********************************************************************************
 // Interfacce implementate:
 // Iterable: Per poter utilizzare L'iteratore sulla collection di tipo List data
@@ -15,40 +20,61 @@ public class Data implements Iterable<Example>, Serializable{
     /** Dataset */
     private List<Example> data = new ArrayList<>();
 
+    public Data(String tableName) throws NoDataException{
+        DbAccess db = new DbAccess();
+        TableData tb = new TableData(db);
+        try {
+            data = tb.getDistinctTransazioni(tableName);
+
+        } catch (SQLException e) {
+
+            System.out.println("Errore nella connessione al Database.");
+
+        } catch (EmptySetException e) {
+
+            System.out.println("Errore nel contenuto della tabella.");
+
+        } catch (MissingNumberException e) {
+
+            System.out.println("Errore, la tabella non contiene valori numerici.");
+
+        }
+    }
+
     /** Avvalora un oggetto data predefinito (fornito dal docente) */
     public Data(){
-		//data
-		
-		Example e=new Example();
-		e.add(1.0);
-		e.add(2.0);
-		e.add(0.0);
-		data.add(e);
-		
-		e=new Example();
-		e.add(0.0);
-		e.add(1.0);
-		e.add(-1.0);
-		data.add(e);
-		
-		e=new Example();
-		e.add(1.0);
-		e.add(3.0);
-		e.add(5.0);
-		data.add(e);
+        //data
+        
+        Example e=new Example();
+        e.add(1.0);
+        e.add(2.0);
+        e.add(0.0);
+        data.add(e);
+    
+        e=new Example();
+        e.add(0.0);
+        e.add(1.0);
+        e.add(-1.0);
+        data.add(e);
+        
+        e=new Example();
+        e.add(1.0);
+        e.add(3.0);
+        e.add(5.0);
+        data.add(e);
 
-		e=new Example();
-		e.add(1.0);
-		e.add(3.0);
-		e.add(4.0);
-		data.add(e);
+        e=new Example();
+        e.add(1.0);
+        e.add(3.0);
+        e.add(4.0);
+        data.add(e);
 
-		e=new Example();
-		e.add(2.0);
-		e.add(2.0);
-		e.add(0.0);
-		data.add(e);	 
-	}
+        e=new Example();
+        e.add(2.0);
+        e.add(2.0);
+        e.add(0.0);
+        data.add(e);	 
+    }
 
     /**
      * Implementazione del metodo virtuale iterator presente nell'interfaccia Iterable
