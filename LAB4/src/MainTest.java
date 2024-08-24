@@ -7,6 +7,17 @@ import src.data.Data;
 import src.distance.*;
 import src.exceptions.NoDataException;
 
+
+//*********************************************************************************************************************
+//	Accortezze per poter utilizzare il programma:
+//
+//	Avere il servizio mySQL avviato sulla macchina su cui si sta eseguendo il programma e sulla porta 3306
+//	Aver precedentemente creato un user nel DBMS di		Username: MapUser	e	Password: map
+//	Aver precedentemente creato un Database con		Nome: MapDB		e opportune tabelle da cui estrapolare gli esempi.
+//
+//	Aver inserito il file "mysql-connector-java-8.0.17.jar" Presente nel package database tra le librerie.
+//	(Esso contiene il driver MYSQL-JDBC)
+//*********************************************************************************************************************
 public class MainTest {
 
 	/**
