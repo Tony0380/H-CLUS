@@ -19,6 +19,15 @@ public class TableData {
         this.db = db;
     }
 
+    /**
+     * interroga la tabella con nome table nel database e restituisce la 
+     * lista di Example memorizzata nella tabella.
+     * @param table Nome tabella da interrogare
+     * @return Lista di Example memorizzata nella tabella
+     * @throws SQLException Errore nella interrogazione
+     * @throws EmptySetException Tabella vuota
+     * @throws MissingNumberException Presenza di attributi non numerici
+     */
     public List<Example> getDistinctTransazioni(String table) 
             throws SQLException, EmptySetException, MissingNumberException {
         List<Example> examples = new ArrayList<>();
