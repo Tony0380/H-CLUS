@@ -98,7 +98,7 @@ public class HierachicalClusterMiner implements Serializable {
 	 * @throws IOException Lanciata in caso di un'operazione di Input/Output fallita o interrotta
 	 * @throws ClassNotFoundException Lanciata quando si tenta di caricare una classe non trovata nel Class Loader di Java.
 	 */
-	public static HierachicalClusterMiner loaHierachicalClusterMiner (String filename) throws FileNotFoundException,
+	public static HierachicalClusterMiner loaHierachicalClusterMiner(String filename) throws FileNotFoundException,
 	IOException, ClassNotFoundException {
 		FileInputStream inFile = new FileInputStream(filename + ".HCM");
 		ObjectInputStream inStream = new ObjectInputStream(inFile);
