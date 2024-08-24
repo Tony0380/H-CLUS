@@ -20,7 +20,7 @@ public class MainTest {
 			data = new Data("exampletab");
 		} catch (NoDataException e) {
 
-			System.out.println("Tabella vuota, generazione di una collezione di esempi random.");
+			System.out.println(e.getMessage());
 			data = new Data();
 		}
 		System.out.println(data);

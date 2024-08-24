@@ -20,6 +20,11 @@ public class Data implements Iterable<Example>, Serializable{
     /** Dataset */
     private List<Example> data = new ArrayList<>();
 
+    /**
+     * Costruttore parametrizzato di un oggetto Data con Esempi letti dal Database
+     * @param tableName Nome della tabella da interrogare da cui leggere gli esempi
+     * @throws NoDataException
+     */
     public Data(String tableName) throws NoDataException{
         DbAccess db = new DbAccess();
         TableData tb = new TableData(db);
@@ -28,15 +33,15 @@ public class Data implements Iterable<Example>, Serializable{
 
         } catch (SQLException e) {
 
-            System.out.println("Errore nella connessione al Database.");
+            throw new NoDataException("Errore di connessione al Db");
 
         } catch (EmptySetException e) {
 
-            System.out.println("Errore nel contenuto della tabella.");
+            throw new NoDataException("Errore nel contenuto della tabella.");
 
         } catch (MissingNumberException e) {
 
-            System.out.println("Errore, la tabella non contiene valori numerici.");
+            throw new NoDataException("Errore, la tabella non contiene valori numerici.");
 
         }
     }
