@@ -14,6 +14,8 @@ import src.exceptions.NoDataException;
 //	Avere il servizio mySQL avviato sulla macchina su cui si sta eseguendo il programma e sulla porta 3306
 //	Aver precedentemente creato un user nel DBMS di		Username: MapUser	e	Password: map
 //	Aver precedentemente creato un Database con		Nome: MapDB		e opportune tabelle da cui estrapolare gli esempi.
+//	Nel caso si vogliano cambiare questi parametri è necessario modificarli negli attributi della classe DbAccess
+//
 //
 //	Aver inserito il file "mysql-connector-java-8.0.17.jar" Presente nel package database tra le librerie.
 //	(Esso contiene il driver MYSQL-JDBC)
