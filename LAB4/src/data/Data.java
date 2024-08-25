@@ -109,6 +109,13 @@ public class Data implements Iterable<Example>, Serializable{
         return str.toString();
     }
 
+    //-----------------------------------------------------------------------------------------------------------------
+    //
+    //  Di conseguenza alla tast "Eliminare il metodo (costruttore) Data() della classe" ho dovuto anche modificare
+    //  il metodo main della classe Data in modo da utilizzare l'unico costruttore possibile che prende gli esempi dal
+    //  Db
+    //
+    //-----------------------------------------------------------------------------------------------------------------
     public static void main(String args[]){
 		Data trainingSet = null;
 		boolean loadedData = false;
