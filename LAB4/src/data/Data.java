@@ -11,12 +11,14 @@ import src.database.TableData;
 import src.exceptions.EmptySetException;
 import src.exceptions.MissingNumberException;
 import src.exceptions.NoDataException;
+
 //**********************************************************************************
 // Interfacce implementate:
 // Iterable: Per poter utilizzare L'iteratore sulla collection di tipo List data
 // Serializable: Per poter serializzare e quindi salvare su file la classe
 //
 //**********************************************************************************
+
 public class Data implements Iterable<Example>, Serializable{
     /** Dataset */
     private List<Example> data = new ArrayList<>();
@@ -111,11 +113,12 @@ public class Data implements Iterable<Example>, Serializable{
 
     //-----------------------------------------------------------------------------------------------------------------
     //
-    //  Di conseguenza alla tast "Eliminare il metodo (costruttore) Data() della classe" ho dovuto anche modificare
+    //  Di conseguenza alla task "Eliminare il metodo (costruttore) Data() della classe" ho dovuto anche modificare
     //  il metodo main della classe Data in modo da utilizzare l'unico costruttore possibile che prende gli esempi dal
     //  Db
     //
     //-----------------------------------------------------------------------------------------------------------------
+
     public static void main(String args[]){
 		Data trainingSet = null;
 		boolean loadedData = false;
