@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import src.Keyboard;
 import src.database.DbAccess;
 import src.database.TableData;
 import src.exceptions.EmptySetException;
@@ -44,41 +45,6 @@ public class Data implements Iterable<Example>, Serializable{
             throw new NoDataException("Errore, la tabella non contiene valori numerici.");
 
         }
-    }
-
-    /** Avvalora un oggetto data predefinito (fornito dal docente) */
-    public Data(){
-        //data
-        
-        Example e=new Example();
-        e.add(1.0);
-        e.add(2.0);
-        e.add(0.0);
-        data.add(e);
-    
-        e=new Example();
-        e.add(0.0);
-        e.add(1.0);
-        e.add(-1.0);
-        data.add(e);
-        
-        e=new Example();
-        e.add(1.0);
-        e.add(3.0);
-        e.add(5.0);
-        data.add(e);
-
-        e=new Example();
-        e.add(1.0);
-        e.add(3.0);
-        e.add(4.0);
-        data.add(e);
-
-        e=new Example();
-        e.add(2.0);
-        e.add(2.0);
-        e.add(0.0);
-        data.add(e);	 
     }
 
     /**
@@ -144,7 +110,24 @@ public class Data implements Iterable<Example>, Serializable{
     }
 
     public static void main(String args[]){
-		Data trainingSet=new Data();
+		Data trainingSet = null;
+		boolean loadedData = false;
+		do { 
+
+			try {
+
+				System.out.print("Inserisci il nome della tabella da cui recuperare gli Esempi: ");
+				String tableName = Keyboard.readString();
+				trainingSet = new Data(tableName);
+				loadedData = true;
+
+			} catch (NoDataException e) {
+	
+				System.out.println(e.getMessage());
+				
+			}
+	
+		} while (!loadedData);
 		System.out.println(trainingSet);
 		double [][] distancematrix=trainingSet.distance();
 		System.out.println("Distance matrix:\n");
