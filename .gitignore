@@ -22,3 +22,11 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+MAP-Data-Mining.iml
+.idea/.gitignore
+.idea/discord.xml
+.idea/material_theme_project_new.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/libraries/mysql_connector_java_8_0_17.xml
