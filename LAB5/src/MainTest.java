@@ -92,11 +92,6 @@ public class MainTest {
 			System.out.println(risposta); // stampo il messaggio di errore
 	}
 	public static void main(String[] args) {
-
-		args = new String[2];
-		args[0] = "127.0.0.1";
-		args[1] = "8080";
-		
 		String ip=args[0];
 		int port=new Integer(args[1]).intValue();
 		MainTest main=null;
