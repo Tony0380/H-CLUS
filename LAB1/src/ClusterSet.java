@@ -1,5 +1,3 @@
-package src.elaborato;
-
 class ClusterSet {
 
 	private Cluster C[];

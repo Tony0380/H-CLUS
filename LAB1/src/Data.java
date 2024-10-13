@@ -1,5 +1,3 @@
-package src.elaborato;
-
 public class Data {
     /** Dataset */
     private Example data[];

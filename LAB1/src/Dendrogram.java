@@ -1,5 +1,3 @@
-package src.elaborato;
-
 public class Dendrogram {
     /**Rappresentazione dei livelli del dendrogramma */
     private ClusterSet tree[];

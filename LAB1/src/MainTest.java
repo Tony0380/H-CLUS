@@ -1,4 +1,3 @@
-package src.elaborato;
 public class MainTest {
 
 	/**

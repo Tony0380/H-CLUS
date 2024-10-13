@@ -1,5 +1,3 @@
-package src.elaborato;
-
 public class Cluster {	
 
 	private Integer clusteredData[]=new Integer[0];

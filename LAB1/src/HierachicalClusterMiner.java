@@ -1,7 +1,4 @@
-package src.elaborato;
-
-
-class HierachicalClusterMiner {
+public class HierachicalClusterMiner {
 	
 	private Dendrogram dendrogram;
 
