@@ -23,7 +23,7 @@ public class MainTest {
 		System.out.println(socket);
 		
 		out = new ObjectOutputStream(socket.getOutputStream());
-		in = new ObjectInputStream(socket.getInputStream());	; // stream con richieste del client
+		in = new ObjectInputStream(socket.getInputStream()); // stream con richieste del client
 	}
 	
 	private int menu(){
@@ -71,7 +71,7 @@ public class MainTest {
 		
 		
 		out.writeObject(1);
-		System.out.println("Introdurre la profondit  del dendrogramma");
+		System.out.println("Introdurre la profondita' del dendrogramma");
 		int depth=Keyboard.readInt();
 		out.writeObject(depth);
 		int dType=-1;
@@ -92,6 +92,11 @@ public class MainTest {
 			System.out.println(risposta); // stampo il messaggio di errore
 	}
 	public static void main(String[] args) {
+
+		args = new String[2];
+		args[0] = "127.0.0.1";
+		args[1] = "8080";
+		
 		String ip=args[0];
 		int port=new Integer(args[1]).intValue();
 		MainTest main=null;

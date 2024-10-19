@@ -2,43 +2,117 @@ package src.server;
 
 import java.io.*;
 import java.net.*;
-
-class ServeOneJabber extends Thread {
+import src.clustering.HierachicalClusterMiner;
+import src.data.Data;
+import src.distance.*;
+import src.exceptions.*;
+public class serverOneClient extends Thread {
     private Socket socket;
-    private BufferedReader in;
-    private PrintWriter out;
-    public ServeOneJabber(Socket s) throws IOException {
+    private ObjectInputStream in;
+    private ObjectOutputStream out;
+
+    public serverOneClient(Socket s) throws IOException {
         socket = s;
-        in = new BufferedReader( new InputStreamReader(
-        socket.getInputStream()));
-    
-        out = new PrintWriter(
-        new BufferedWriter(
-        new OutputStreamWriter(
-        socket.getOutputStream())), true);
+        in = new ObjectInputStream(socket.getInputStream());
+        out = new ObjectOutputStream(socket.getOutputStream());
+
         // se una qualsiasi delle chiamate precedenti solleva una
         // eccezione, il processo chiamante è responsabile della 
         // chiusura del socket. Altrimenti lo chiuderà il thread 
         start(); // Chiama run()
     }
 
-    public void run() {
-        try {
-            while (true) {
-                String str = in.readLine();
-                if (str.equals("END")) break;
-                System.out.println("Echoing: " + str);
-                out.println(str);
-                }
-            System.out.println("closing...");
-        } catch(IOException e) {
-            System.err.println("IO Exception");
-        } finally {
+    /**
+     * Ricevuto il nome della taballa del DB da cui prendere gli esempi,
+     * crea l'oggetto di tipo Data e lo restituisce
+     * @return Data presi dal Database e dalla tabella specificata dal client
+     * @throws IOException Ecccezione di I/O
+     */
+    private Data receiveDataClient() throws IOException, ClassNotFoundException {
+        String data = (String) in.readObject();
+        System.out.println("Ricevuto: " + data);
+        out.writeObject("OK");
+
+        Data datas = null;
+		boolean loadedData = false;
+
+        do {
             try {
-                socket.close();
-            } catch(IOException e) {
-                System.err.println("Socket not closed");
+                datas = new Data(data);
+                loadedData = true;
+            } catch (NoDataException e) {
+                System.out.println(e.getMessage());
             }
+        } while (!loadedData);
+        return datas;
+    }
+
+    /**
+     * Carica il dendrogramma da file sul server
+     * @throws IOException Eccezione di I/O
+     * @throws ClassNotFoundException Eccezione di classe non trovata
+     */
+    private void loadDedrogramFromFileOnServer() throws IOException, ClassNotFoundException {
+        String filename = (String) in.readObject();
+        System.out.println("Ricevuto: " + filename);
+        
+        HierachicalClusterMiner hcm = HierachicalClusterMiner.loaHierachicalClusterMiner(filename);
+        out.writeObject(hcm);
+    }
+
+    /**
+     * Esegue il clustering gerarchico
+     * @param data Data da clusterizzare
+     * @throws IOException Eccezione di I/O
+     * @throws ClassNotFoundException Eccezione di classe non trovata
+     */
+    private void mineDendrogram(Data data) throws IOException, ClassNotFoundException {
+        HierachicalClusterMiner hcm = new HierachicalClusterMiner((int) in.readObject());
+        int choice = (int) in.readObject();
+        try {
+            if(choice == 1) {
+                ClusterDistance distance = new SingleLinkDistance();
+                hcm.mine(data, distance);
+            } else if(choice == 2) {
+                ClusterDistance distance = new AverageLinkDistance();
+                hcm.mine(data, distance);
+            } else {
+                throw new InvalidChoiceException("Scelta non valida");
+            }
+            out.writeObject("OK");
+            out.writeObject(hcm);
+
+            hcm.salva((String) in.readObject());
+        } catch (InvalidChoiceException e) {
+            System.out.println(e.getMessage());
+        }
+
+    } 
+
+    public void run() {
+        int check;
+        Data data = null;
+        try {
+            check = (int) in.readObject();
+            if(check == 0) {
+                data = receiveDataClient();
+            } else {
+                throw new InvalidChoiceException("Errore nella connessione");
+            }
+            check = (int) in.readObject();
+            if (check == 1) {
+                mineDendrogram(data);
+            } else if (check == 2) {
+                loadDedrogramFromFileOnServer();
+            } else {
+                throw new InvalidChoiceException("Errore nella connessione");
+            }
+        } catch (InvalidChoiceException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

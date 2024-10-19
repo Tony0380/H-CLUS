@@ -1,0 +1,45 @@
+{
+    // Usare IntelliSense per informazioni sui possibili attributi.
+    // Al passaggio del mouse vengono visualizzate le descrizioni degli attributi esistenti.
+    // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "MainTest",
+            "request": "launch",
+            "mainClass": "src.MainTest",
+            "projectName": "LAB5_8a9537d5"
+        },
+        {
+            "type": "java",
+            "name": "Data",
+            "request": "launch",
+            "mainClass": "src.data.Data",
+            "projectName": "LAB5_8a9537d5"
+        },
+        {
+            "type": "java",
+            "name": "multiServer",
+            "request": "launch",
+            "mainClass": "src.server.multiServer",
+            "projectName": "LAB5_8a9537d5"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Main)",
+            "request": "launch",
+            "mainClass": "src.MainTest",
+            "classpath": [
+                "src/mysql-connector-java-8.0.17.jar", // percorso relativo al JAR
+                "bin" // il percorso dove vengono compilati i tuoi file .class
+            ]
+        }
+    ]
+}
